@@ -1,0 +1,19 @@
+{
+  "name": "html-bower",
+  "authors": [
+    "Pepe Valdivia <<jose.valdivia@enterkeyperu.com>>"
+  ],
+  "description": "Bower File for EcoreTrading",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

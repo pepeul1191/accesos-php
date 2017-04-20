@@ -1,0 +1,4 @@
+public/bower_components/*
+app/vendor/*
+app/templates_c/*
+.git/
