@@ -15,8 +15,10 @@ class ComposerStaticInitceac49b83e66207e5b2ff31dd4059e77
     public static $classMap = array (
         'Configuration' => __DIR__ . '/../../..' . '/app/config/configuration.php',
         'Controller' => __DIR__ . '/../../..' . '/app/config/controller.php',
+        'Controller_Acceso' => __DIR__ . '/../../..' . '/app/controllers/acceso.php',
         'Controller_Demo' => __DIR__ . '/../../..' . '/app/controllers/demo.php',
         'Controller_Error' => __DIR__ . '/../../..' . '/app/controllers/error.php',
+        'Controller_Estado_Usuario' => __DIR__ . '/../../..' . '/app/controllers/estado_usuario.php',
         'Controller_Index' => __DIR__ . '/../../..' . '/app/controllers/index.php',
         'Database' => __DIR__ . '/../../..' . '/app/config/database.php',
         'IdiormMethodMissingException' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',

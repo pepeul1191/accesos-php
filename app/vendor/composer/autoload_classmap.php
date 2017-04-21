@@ -8,8 +8,10 @@ $baseDir = dirname(dirname($vendorDir));
 return array(
     'Configuration' => $baseDir . '/app/config/configuration.php',
     'Controller' => $baseDir . '/app/config/controller.php',
+    'Controller_Acceso' => $baseDir . '/app/controllers/acceso.php',
     'Controller_Demo' => $baseDir . '/app/controllers/demo.php',
     'Controller_Error' => $baseDir . '/app/controllers/error.php',
+    'Controller_Estado_Usuario' => $baseDir . '/app/controllers/estado_usuario.php',
     'Controller_Index' => $baseDir . '/app/controllers/index.php',
     'Database' => $baseDir . '/app/config/database.php',
     'IdiormMethodMissingException' => $vendorDir . '/j4mie/idiorm/idiorm.php',

@@ -22,6 +22,8 @@ Flight::route('GET /demo/db', array('Controller_Demo','listar_usuarios'));
 #Flight::route('GET /demo/vista', array('Controller_Demo','vista'));
 #Flight::route('GET /demo/partial/@valor', array('Controller_Demo','partial'));
 
+Flight::route('GET /estado_usuario/listar', array('Controller_Estado_Usuario','listar'));
+
 Flight::map('notFound', function(){
 	Flight::redirect('/error/404');
 });
