@@ -25,9 +25,13 @@ Servicio web desarrollado en PHP usando el framework FlightPHP, con patrones de 
 ### Rutas
 
 + get 'estado_usuario/listar', to Controller_Estado_Usuario#listar
++ get '/item/listar/menu/@nombre_modulo', to Controller_Item#menu
++ post 'usuario/validar', to: 'usuario#validar'
+
+
+
 + get 'usuario/listar', to: 'usuario#listar'
 + get 'usuario/listar_permisos/:usuario_id', 'usuario/listar_permisos'
-+ post 'usuario/validar', to: 'usuario#validar'
 
 ### Rutas - Descripción
 
@@ -51,6 +55,64 @@ Devolver un listado de los estados en los que se puede encontrar un usuario.
 JSON string de la lista de usuarios.
 
 > [{"id":"1","nombre":"activo"},{"id":"2","nombre":"bloqueado"},{"id":"3","nombre":"eliminado"}]
+
+<b>Formato de respuesta alternativo </b>
+
++ Los generados por las excepciones controladas con el siguiente formato:
+
+> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
+
+---
+
+#### [URL] + /item/listar/menu/@nombre_modulo
+
+<b>Objetivo(s)</b>
+
+Devolver un listado de los subtitulos con sus respectivos items y urls.
+
+<b>Método HTTP</b>
+
++ GET
+
+<b>Parámetros</b>
+
++ Argumentos en la url : @nombre_modulo
++ Query Params : ninguno 
+
+<b>Formato de respuesta OK</b>
+
+JSON string de la lista de usuarios.
+
+> [[{"subtitulo":"Usuarios","items":[{"item":"Listado","url":"accesos\/usuarios"}]},{"subtitulo":"Menu","items":[{"item":"Listado","url":"accesos\/menus"}]},{"subtitulo":"Acceso a Funciones","items":[{"item":"Listado de permisos","url":"accesos\/permisos"},{"item":"Listado de roles","url":"accesos\/roles"}]},{"subtitulo":"Logs","items":[{"item":"Logs de errores","url":"accesos\/log\/errores"},{"item":"Listado de roles","url":"accesos\/roles"},{"item":"Logs de acceso","url":"accesos\/log\/accesos"},{"item":"Logs de operaciones","url":"accesos\/log\/operaciones"}]}]
+
+<b>Formato de respuesta alternativo </b>
+
++ Los generados por las excepciones controladas con el siguiente formato:
+
+> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
+
+---
+
+#### [URL] + modulo/listar
+
+<b>Objetivo(s)</b>
+
+Devolver un listado de los módulos del sistema
+
+<b>Método HTTP</b>
+
++ GET
+
+<b>Parámetros</b>
+
++ Argumentos en la url : ninguno
++ Query Params : ninguno 
+
+<b>Formato de respuesta OK</b>
+
+JSON string de la lista de módulos.
+
+> [{"id":"1","url":"accesos","nombre":"Accesos"},{"id":"2","url":"seguridad","nombre":"Seguridad"},{"id":"3","url":"demo\/archivos","nombre":"Demo"}]
 
 <b>Formato de respuesta alternativo </b>
 
