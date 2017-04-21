@@ -8,10 +8,10 @@ class Controller_Acceso extends Controller
         $accesos->crear($usuario_id);
     }
 
-    public static function listar_usuarios($usuario_id)
+    public static function listar_accesos($usuario_id)
     {
         $accesos = Controller::load_model('accesos');
-        echo json_encode($accesos->listar_usuarios($usuario_id));
+        return $accesos->listar_accesos($usuario_id);
     }
 }
 

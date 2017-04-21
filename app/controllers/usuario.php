@@ -21,6 +21,12 @@ class Controller_Usuario extends Controller
        $usuarios = Controller::load_model('usuarios');
         echo json_encode($usuarios->listar()); 
     }
+
+    public static function listar_accesos($usuario_id)
+    {
+        $accesos_usuarios = Controller_Acceso::listar_accesos($usuario_id);
+        echo json_encode($accesos_usuarios); 
+    }
 }
 
 ?>

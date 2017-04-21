@@ -34,7 +34,15 @@ Flight::route('POST /modulo/guardar', array('Controller_Modulo','guardar'));
 Flight::route('GET /subtitulo/listar/@modulo_id', array('Controller_Subtitulo','listar'));
 Flight::route('POST /subtitulo/guardar', array('Controller_Subtitulo','guardar'));
 
+Flight::route('GET /permiso/listar', array('Controller_Permiso','listar'));
+Flight::route('GET /permiso/listar_asociados/@rol_id', array('Controller_Permiso','listar_asociados'));
+Flight::route('POST /permiso/guardar', array('Controller_Permiso','guardar'));
+Flight::route('GET /rol/listar', array('Controller_Rol','listar'));
+Flight::route('POST /rol/guardar', array('Controller_Rol','guardar'));
+Flight::route('POST /rol/ascociar_permisos', array('Controller_Rol','ascociar_permisos'));
+
 Flight::route('GET /usuario/listar', array('Controller_Usuario','listar'));
+Flight::route('GET /usuario/listar_accesos/@usuario_id', array('Controller_Usuario','listar_accesos'));
 Flight::route('POST /usuario/validar', array('Controller_Usuario','validar'));
 
 Flight::map('notFound', function(){
