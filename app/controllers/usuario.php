@@ -15,6 +15,12 @@ class Controller_Usuario extends Controller
 
         echo $rpta;
     }
+
+    public static function listar()
+    {
+       $usuarios = Controller::load_model('usuarios');
+        echo json_encode($usuarios->listar()); 
+    }
 }
 
 ?>

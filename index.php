@@ -31,7 +31,10 @@ Flight::route('GET /item/listar/@subtitulo_id', array('Controller_Item','listar'
 Flight::route('POST /item/guardar', array('Controller_Item','guardar'));
 Flight::route('GET /modulo/listar', array('Controller_Modulo','listar'));
 Flight::route('POST /modulo/guardar', array('Controller_Modulo','guardar'));
+Flight::route('GET /subtitulo/listar/@modulo_id', array('Controller_Subtitulo','listar'));
+Flight::route('POST /subtitulo/guardar', array('Controller_Subtitulo','guardar'));
 
+Flight::route('GET /usuario/listar', array('Controller_Usuario','listar'));
 Flight::route('POST /usuario/validar', array('Controller_Usuario','validar'));
 
 Flight::map('notFound', function(){

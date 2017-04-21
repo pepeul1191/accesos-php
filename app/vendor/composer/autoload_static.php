@@ -22,6 +22,7 @@ class ComposerStaticInitceac49b83e66207e5b2ff31dd4059e77
         'Controller_Index' => __DIR__ . '/../../..' . '/app/controllers/index.php',
         'Controller_Item' => __DIR__ . '/../../..' . '/app/controllers/item.php',
         'Controller_Modulo' => __DIR__ . '/../../..' . '/app/controllers/modulo.php',
+        'Controller_Subtitulo' => __DIR__ . '/../../..' . '/app/controllers/subtitulo.php',
         'Controller_Usuario' => __DIR__ . '/../../..' . '/app/controllers/usuario.php',
         'Database' => __DIR__ . '/../../..' . '/app/config/database.php',
         'IdiormMethodMissingException' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',

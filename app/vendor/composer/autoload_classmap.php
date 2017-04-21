@@ -15,6 +15,7 @@ return array(
     'Controller_Index' => $baseDir . '/app/controllers/index.php',
     'Controller_Item' => $baseDir . '/app/controllers/item.php',
     'Controller_Modulo' => $baseDir . '/app/controllers/modulo.php',
+    'Controller_Subtitulo' => $baseDir . '/app/controllers/subtitulo.php',
     'Controller_Usuario' => $baseDir . '/app/controllers/usuario.php',
     'Database' => $baseDir . '/app/config/database.php',
     'IdiormMethodMissingException' => $vendorDir . '/j4mie/idiorm/idiorm.php',
