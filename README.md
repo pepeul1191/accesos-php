@@ -24,11 +24,41 @@ Servicio web desarrollado en PHP usando el framework FlightPHP, con patrones de 
 
 ### Rutas
 
++ get 'estado_usuario/listar', to Controller_Estado_Usuario#listar
 + get 'usuario/listar', to: 'usuario#listar'
 + get 'usuario/listar_permisos/:usuario_id', 'usuario/listar_permisos'
 + post 'usuario/validar', to: 'usuario#validar'
 
 ### Rutas - Descripción
+
+#### [URL] + estado_usuario/listar
+
+<b>Objetivo(s)</b>
+
+Devolver un listado de los estados en los que se puede encontrar un usuario.
+
+<b>Método HTTP</b>
+
++ GET
+
+<b>Parámetros</b>
+
++ Argumentos en la url : ninguno
++ Query Params : ninguno 
+
+<b>Formato de respuesta OK</b>
+
+JSON string de la lista de usuarios.
+
+> [{"id":"1","nombre":"activo"},{"id":"2","nombre":"bloqueado"},{"id":"3","nombre":"eliminado"}]
+
+<b>Formato de respuesta alternativo </b>
+
++ Los generados por las excepciones controladas con el siguiente formato:
+
+> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
+
+---
 
 #### [URL] + usuario/listar
 
