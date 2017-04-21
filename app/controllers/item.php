@@ -2,6 +2,11 @@
 
 class Controller_Item extends Controller
 {
+	public static function guardar()
+	{
+		
+	}
+
     public static function menu($nombre_modulo)
     {
 		$items = Controller::load_model('items');

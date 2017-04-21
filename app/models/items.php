@@ -7,6 +7,32 @@ class Items extends Database
 		parent::__construct();
 	}
 
+	public function crear($subtitulo_id, $nombre, $url)
+	{
+		$items = ORM::for_table('items')->create();
+		$items->set('subtitulo_id', $subtitulo_id);
+		$items->set('nombre', $nombre);
+		$items->set('url', $url);
+		$items->save();
+		
+		return $items->id(); 
+	}
+
+	public function editar($id, $subtitulo_id, $nombre, $url)
+	{
+		$items = ORM::for_table('items')->where_equal('id', $id);
+		$items->set('subtitulo_id', $subtitulo_id);
+		$items->set('nombre', $nombre);
+		$items->set('url', $url);
+		$items->save();
+	}
+
+	public function eliminar($id)
+	{
+		$items = ORM::for_table('items')->where_equal('id', $id);
+		$items->delete();
+	}
+
 	public function menu($nombre_modulo)
 	{
 		return ORM::for_table('items')->raw_query('
