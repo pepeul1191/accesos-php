@@ -123,6 +123,35 @@ JSON string de la lista de módulos.
 
 ---
 
+#### [URL] + item/listar/@subtitulo_id
+
+<b>Objetivo(s)</b>
+
+Devolver un listado de los items perteneciente a los un determinado subtitulo.
+
+<b>Método HTTP</b>
+
++ GET
+
+<b>Parámetros</b>
+
++ Argumentos en la url : @subtitulo_id
++ Query Params : ninguno 
+
+<b>Formato de respuesta OK</b>
+
+JSON string de la lista de módulos.
+
+> [{"id":"6","nombre":"Logs de errores","url":"accesos\/log\/errores"},{"id":"7","nombre":"Logs de acceso","url":"accesos\/log\/accesos"},{"id":"8","nombre":"Logs de operaciones","url":"accesos\/log\/operaciones"}]
+
+<b>Formato de respuesta alternativo </b>
+
++ Los generados por las excepciones controladas con el siguiente formato:
+
+> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
+
+---
+
 #### [URL] + modulo/listar_todos
 
 <b>Objetivo(s)</b>

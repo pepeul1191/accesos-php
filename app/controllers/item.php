@@ -42,6 +42,12 @@ class Controller_Item extends Controller
 
 		echo "FALTA TERMINAR XD";
     }
+
+    public static function listar($subtitulo_id)
+    {
+    		$items = Controller::load_model('items');
+        	echo json_encode($items->listar($subtitulo_id));
+    }
 }
 
 ?>

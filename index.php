@@ -27,6 +27,7 @@ Flight::route('GET /demo/db', array('Controller_Demo','listar_usuarios'));
 Flight::route('GET /estado_usuario/listar', array('Controller_Estado_Usuario','listar'));
 Flight::route('GET /item/listar/menu/@nombre_modulo', array('Controller_Item','menu'));
 Flight::route('GET /item/listar_todos', array('Controller_Item','listar_todos'));
+Flight::route('GET /item/listar/@subtitulo_id', array('Controller_Item','listar'));
 
 Flight::route('GET /modulo/listar', array('Controller_Modulo','listar'));
 

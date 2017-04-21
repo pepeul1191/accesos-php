@@ -27,6 +27,11 @@ class Items extends Database
             GROUP BY subtitulo
             ORDER BY modulo')->find_array();
 	}
+
+	public function listar($subtitulo_id)
+	{
+		return ORM::for_table('items')->select('id')->select('nombre')->select('url')->where('subtitulo_id', $subtitulo_id)->find_array();
+	}
 }
 
 ?>
