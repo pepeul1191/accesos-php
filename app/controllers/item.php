@@ -32,6 +32,16 @@ class Controller_Item extends Controller
 
 		echo json_encode($rpta);
     }
+
+    public static function listar_todos()
+    {
+    		$items = Controller::load_model('items');
+		$items = $items->listar_todos();
+
+		var_dump($items);
+
+		echo "FALTA TERMINAR XD";
+    }
 }
 
 ?>

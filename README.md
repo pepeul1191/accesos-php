@@ -26,6 +26,7 @@ Servicio web desarrollado en PHP usando el framework FlightPHP, con patrones de 
 
 + get 'estado_usuario/listar', to Controller_Estado_Usuario#listar
 + get '/item/listar/menu/@nombre_modulo', to Controller_Item#menu
++ get '/item/listar_todos', to Controller_Item#listar_todos
 + post 'usuario/validar', to: 'usuario#validar'
 
 
@@ -113,6 +114,35 @@ Devolver un listado de los módulos del sistema
 JSON string de la lista de módulos.
 
 > [{"id":"1","url":"accesos","nombre":"Accesos"},{"id":"2","url":"seguridad","nombre":"Seguridad"},{"id":"3","url":"demo\/archivos","nombre":"Demo"}]
+
+<b>Formato de respuesta alternativo </b>
+
++ Los generados por las excepciones controladas con el siguiente formato:
+
+> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
+
+---
+
+#### [URL] + modulo/listar_todos
+
+<b>Objetivo(s)</b>
+
+Devolver un listado del menú completo, formado por módulos, subtitulos e items.
+
+<b>Método HTTP</b>
+
++ GET
+
+<b>Parámetros</b>
+
++ Argumentos en la url : ninguno
++ Query Params : ninguno 
+
+<b>Formato de respuesta OK</b>
+
+JSON string de la lista de módulos.
+
+> [{"icono":"glyphicon glyphicon-user","subtitulos":[{"subtitulo":"Acceso a Funciones","items":[{"url":"accesos/permisos","nombre":"Listado de permisos"},{"nombre":"Listado de roles","url":"accesos/roles"}]},{"subtitulo":"Logs","items":[{"url":"accesos/log/errores","nombre":"Logs de errores"},{"nombre":"Logs de acceso","url":"accesos/log/accesos"},{"url":"accesos/log/operaciones","nombre":"Logs de operaciones"}]},{"items":[{"nombre":"Listado","url":"accesos/menus"}],"subtitulo":"Menu"},{"subtitulo":"Usuarios","items":[{"nombre":"Listado","url":"accesos/usuarios"}]}],"modulo":"Accesos"},{"modulo":"Demo","subtitulos":[{"items":[{"nombre":"Archivos con Samba","url":"demo/archivos"}],"subtitulo":"Funcionalidades Demo"}],"icono":null},{"modulo":"Seguridad","subtitulos":[{"subtitulo":"GestiÃ³n","items":[{"url":"seguridad/gestion/activos","nombre":"Inventario de Activos"}]},{"subtitulo":"Maestros","items":[{"url":"seguridad/maestros/controles","nombre":"Controles"},{"url":"seguridad/maestros/vulnerabilidades","nombre":"Vulnerabilidades"},{"nombre":"Grupo de Activos","url":"seguridad/maestros/grupo_activos"},{"nombre":"Amenazas","url":"seguridad/maestros/amenazas"},{"nombre":"Riegos","url":"seguridad/maestros/riesgos"},{"url":"seguridad/maestros/agentes","nombre":"Agentes"},{"nombre":"Ubicaciones","url":"seguridad/maestros/ubicaciones"},{"nombre":"Capas","url":"seguridad/maestros/capas"},{"url":"seguridad/maestros/criticidades","nombre":"Criticidades"},{"url":"seguridad/maestros/tipo_activos","nombre":"Tipo de Activos"}]},{"subtitulo":"Reportes","items":[{"url":"repo/1","nombre":"Repo 1"},{"nombre":"Repo 2","url":"repo/2"}]}],"icono":"glyphicon glyphicon-lock"}]
 
 <b>Formato de respuesta alternativo </b>
 
