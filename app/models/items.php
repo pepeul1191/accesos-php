@@ -7,7 +7,7 @@ class Items extends Database
 		parent::__construct();
 	}
 
-	public function crear($subtitulo_id, $nombre, $url)
+	public function crear($nombre, $url, $subtitulo_id)
 	{
 		$items = ORM::for_table('items')->create();
 		$items->set('subtitulo_id', $subtitulo_id);
@@ -18,10 +18,9 @@ class Items extends Database
 		return $items->id(); 
 	}
 
-	public function editar($id, $subtitulo_id, $nombre, $url)
+	public function editar($id, $nombre, $url)
 	{
-		$items = ORM::for_table('items')->where_equal('id', $id);
-		$items->set('subtitulo_id', $subtitulo_id);
+		$items = ORM::for_table('items')->where_equal('id', $id)->find_one();
 		$items->set('nombre', $nombre);
 		$items->set('url', $url);
 		$items->save();
@@ -29,8 +28,7 @@ class Items extends Database
 
 	public function eliminar($id)
 	{
-		$items = ORM::for_table('items')->where_equal('id', $id);
-		$items->delete();
+		ORM::for_table('items')->where_equal('id', $id)->find_one()->delete();
 	}
 
 	public function menu($nombre_modulo)
