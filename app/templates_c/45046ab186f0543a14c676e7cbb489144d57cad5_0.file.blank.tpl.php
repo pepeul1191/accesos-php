@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-04-20 21:07:24
-  from "/home/pepe/Documentos/php/accesos-php/app/templates/layouts/blank.tpl" */
+/* Smarty version 3.1.31, created on 2017-04-24 20:20:14
+  from "/home/pepe/Documentos/php/accesos/app/templates/layouts/blank.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58f9695ca23740_13071051',
+  'unifunc' => 'content_58fea44e798b15_84642910',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '5eb195db66be0248432a8fc473b16b23a41bf668' => 
+    '45046ab186f0543a14c676e7cbb489144d57cad5' => 
     array (
-      0 => '/home/pepe/Documentos/php/accesos-php/app/templates/layouts/blank.tpl',
+      0 => '/home/pepe/Documentos/php/accesos/app/templates/layouts/blank.tpl',
       1 => 1490845392,
       2 => 'file',
     ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f9695ca23740_13071051 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fea44e798b15_84642910 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 <head>

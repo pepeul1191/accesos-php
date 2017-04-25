@@ -6,7 +6,7 @@ class Modulos extends Database
 		parent::__construct();
 	}
 
-	public function crear($nombre, $url, $icono)
+	public function crear($nombre, $url, $icono = '')
 	{
 		$modulos = ORM::for_table('modulos')->create();
 		$modulos->set('nombre', $nombre);
@@ -17,9 +17,9 @@ class Modulos extends Database
 		return $modulos->id(); 
 	}
 
-	public function editar($id, $nombre, $url, $icono)
+	public function editar($id, $nombre, $url, $icono = '')
 	{
-		$modulos = ORM::for_table('modulos')->where_equal('id', $id);
+		$modulos = ORM::for_table('modulos')->where_equal('id', $id)->find_one();
 		$modulos->set('nombre', $nombre);
 		$modulos->set('url', $url);
 		$modulos->set('icono', $icono);
@@ -28,8 +28,7 @@ class Modulos extends Database
 
 	public function eliminar($id)
 	{
-		$modulos = ORM::for_table('modulos')->where_equal('id', $id);
-		$modulos->delete();
+		$modulos = ORM::for_table('modulos')->where_equal('id', $id)->find_one()->delete();
 	}
 
 	public function listar(){

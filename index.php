@@ -44,11 +44,11 @@ Flight::route('POST /rol/ascociar_permisos', array('Controller_Rol','ascociar_pe
 Flight::route('GET /usuario/listar', array('Controller_Usuario','listar'));
 Flight::route('GET /usuario/listar_accesos/@usuario_id', array('Controller_Usuario','listar_accesos'));
 Flight::route('POST /usuario/validar', array('Controller_Usuario','validar'));
-
+/*
 Flight::map('notFound', function(){
 	Flight::redirect('/error/404');
 });
-
+*/
 Flight::start();
 
 ?>
