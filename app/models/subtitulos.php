@@ -16,18 +16,16 @@ class Subtitulos extends Database
 		return $subtitulos->id(); 
 	}
 
-	public function editar($id, $nombre, $modulo_id)
+	public function editar($id, $nombre)
 	{
-		$subtitulos = ORM::for_table('subtitulos')->where_equal('id', $id);
+		$subtitulos = ORM::for_table('subtitulos')->where_equal('id', $id)->find_one();
 		$subtitulos->set('nombre', $nombre);
-		$subtitulos->set('modulo_id', $modulo_id);
 		$subtitulos->save();
 	}
 
 	public function eliminar($id)
 	{
-		$subtitulos = ORM::for_table('subtitulos')->where_equal('id', $id);
-		$subtitulos->delete();
+		ORM::for_table('subtitulos')->where_equal('id', $id)->find_one()->delete();
 	}
 
 	public function listar($modulo_id){

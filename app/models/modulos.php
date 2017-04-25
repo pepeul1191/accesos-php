@@ -28,7 +28,7 @@ class Modulos extends Database
 
 	public function eliminar($id)
 	{
-		$modulos = ORM::for_table('modulos')->where_equal('id', $id)->find_one()->delete();
+		ORM::for_table('modulos')->where_equal('id', $id)->find_one()->delete();
 	}
 
 	public function listar(){
