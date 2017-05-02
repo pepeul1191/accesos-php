@@ -7,6 +7,29 @@ class Permisos extends Database
 		parent::__construct();
 	}
 
+	public function crear($nombre, $llave)
+	{
+		$permisos = ORM::for_table('permisos')->create();
+		$permisos->set('nombre', $nombre);
+		$permisos->set('llave', $llave);
+		$permisos->save();
+		
+		return $permisos->id(); 
+	}
+
+	public function editar($id, $nombre, $llave)
+	{
+		$permisos = ORM::for_table('permisos')->where_equal('id', $id)->find_one();
+		$permisos->set('nombre', $nombre);
+		$permisos->set('llave', $llave);
+		$permisos->save();
+	}
+
+	public function eliminar($id)
+	{
+		ORM::for_table('permisos')->where_equal('id', $id)->find_one()->delete();
+	}
+
 	public function listar()
 	{
 		return ORM::for_table('permisos')->select('id')->select('nombre')->select('llave')->find_array();
