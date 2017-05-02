@@ -39,6 +39,8 @@ Flight::route('POST /permiso/guardar', array('Controller_Permiso','guardar'));
 Flight::route('GET /rol/listar', array('Controller_Rol','listar'));
 Flight::route('POST /rol/guardar', array('Controller_Rol','guardar'));
 Flight::route('POST /rol/ascociar_permisos', array('Controller_Rol','ascociar_permisos'));
+Flight::route('GET /sistema/listar', array('Controller_Sistema','listar'));
+Flight::route('POST /sistema/guardar', array('Controller_Sistema','guardar'));
 Flight::route('GET /usuario/listar', array('Controller_Usuario','listar'));
 Flight::route('GET /usuario/listar_accesos/@usuario_id', array('Controller_Usuario','listar_accesos'));
 Flight::route('GET /usuario/listar_permisos/@usuario_id', array('Controller_Usuario','listar_permisos'));

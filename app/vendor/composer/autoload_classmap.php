@@ -17,6 +17,7 @@ return array(
     'Controller_Modulo' => $baseDir . '/app/controllers/modulo.php',
     'Controller_Permiso' => $baseDir . '/app/controllers/permiso.php',
     'Controller_Rol' => $baseDir . '/app/controllers/rol.php',
+    'Controller_Sistema' => $baseDir . '/app/controllers/sistema.php',
     'Controller_Subtitulo' => $baseDir . '/app/controllers/subtitulo.php',
     'Controller_Usuario' => $baseDir . '/app/controllers/usuario.php',
     'Database' => $baseDir . '/app/config/database.php',

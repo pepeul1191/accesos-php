@@ -24,6 +24,7 @@ class ComposerStaticInitceac49b83e66207e5b2ff31dd4059e77
         'Controller_Modulo' => __DIR__ . '/../../..' . '/app/controllers/modulo.php',
         'Controller_Permiso' => __DIR__ . '/../../..' . '/app/controllers/permiso.php',
         'Controller_Rol' => __DIR__ . '/../../..' . '/app/controllers/rol.php',
+        'Controller_Sistema' => __DIR__ . '/../../..' . '/app/controllers/sistema.php',
         'Controller_Subtitulo' => __DIR__ . '/../../..' . '/app/controllers/subtitulo.php',
         'Controller_Usuario' => __DIR__ . '/../../..' . '/app/controllers/usuario.php',
         'Database' => __DIR__ . '/../../..' . '/app/config/database.php',
