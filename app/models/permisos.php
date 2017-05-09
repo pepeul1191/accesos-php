@@ -46,9 +46,9 @@ class Permisos extends Database
         (
             SELECT P.id, P.nombre,  P.llave, 1 AS existe  FROM permisos P 
             INNER JOIN roles_permisos RP ON P.id = RP.permiso_id
-            WHERE RP.rol_id = ?
+            WHERE RP.rol_id = :rol_id
         ) P
-        ON T.id = P.id', array())->find_array();
+        ON T.id = P.id', array('rol_id' => $rol_id))->find_array();
 	}
 }
 

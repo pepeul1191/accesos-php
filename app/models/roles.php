@@ -32,6 +32,19 @@ class Roles extends Database
 	{
 		return ORM::for_table('roles')->select('id')->select('nombre')->find_array();
 	}
+
+	public function asociar_permiso($rol_id, $permiso_id)
+	{
+		$roles_permisos = ORM::for_table('roles_permisos')->create();
+		$roles_permisos->set('rol_id', $rol_id);
+		$roles_permisos->set('permiso_id', $permiso_id);
+		$roles_permisos->save();
+	}
+
+	public function desasociar_permiso($rol_id, $permiso_id)
+	{
+		ORM::for_table('roles_permisos')->where_equal(array('rol_id' =>$rol_id, 'permiso_id' => $permiso_id))->find_one()->delete();
+	}
 }
 
 ?>
