@@ -33,7 +33,7 @@ class Controller_Sistema extends Controller
 			$rpta['tipo_mensaje'] = 'success';
         	$rpta['mensaje'] = ['Se ha registrado los cambios en los sistemas', $array_nuevos];
 		} catch (Exception $e) {
-		    #echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+		    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
 		    $rpta['tipo_mensaje'] = 'error';
         	$rpta['mensaje'] = ['Se ha producido un error en guardar la tabla de sistemas', $e->getMessage()];
 		}

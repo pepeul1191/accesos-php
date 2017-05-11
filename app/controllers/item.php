@@ -42,10 +42,13 @@ class Controller_Item extends Controller
 		echo json_encode($rpta);
 	}
 
-    public static function menu($nombre_modulo)
+    public static function menu()
     {
+    	$sistema = Flight::request()->query['sistema'];
+    	$nombre_modulo = Flight::request()->query['nombre_modulo'];
+
 		$items = Controller::load_model('items');
-		$items = $items->menu($nombre_modulo);
+		$items = $items->menu($sistema, $nombre_modulo);
 		$temp_subtitulos = [];
 		$temp_items = [];
 		$rpta = [];

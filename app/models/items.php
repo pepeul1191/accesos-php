@@ -31,13 +31,14 @@ class Items extends Database
 		ORM::for_table('items')->where_equal('id', $id)->find_one()->delete();
 	}
 
-	public function menu($nombre_modulo)
+	public function menu($sistema, $nombre_modulo)
 	{
 		return ORM::for_table('items')->raw_query('
             SELECT I.nombre AS item, I.url, S.nombre AS subtitulo FROM items I 
             INNER JOIN subtitulos S ON I.subtitulo_id = S.id
-            INNER JOIN modulos M ON S.modulo_id = M.id
-            WHERE M.nombre = :nombre', array('nombre' => $nombre_modulo))->find_array();
+            INNER JOIN modulos M ON S.modulo_id = M.id 
+            INNER JOIN sistemas SI ON SI.id = M.sistema_id 
+            WHERE M.nombre = :nombre  AND SI.nombre = :sistema', array('nombre' => $nombre_modulo, 'sistema' => $sistema))->find_array();
 	}
 
 	public function listar_todos()
