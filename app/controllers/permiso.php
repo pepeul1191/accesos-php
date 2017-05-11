@@ -8,12 +8,13 @@ class Controller_Permiso extends Controller
         $nuevos = $data->{'nuevos'};
         $editados = $data->{'editados'};
         $eliminados = $data->{'eliminados'};
+        $sistema_id = $data->{"extra"}->{'sistema_id'};
         $rpta = []; $array_nuevos = [];
 
         try {
             if(count($nuevos) > 0){
                 foreach ($nuevos as &$nuevo) {
-                    $id_generado = self::crear($nuevo->{'nombre'}, $nuevo->{'llave'});
+                    $id_generado = self::crear($sistema_id, $nuevo->{'nombre'}, $nuevo->{'llave'});
                     $temp = [];
                     $temp['temporal'] = $nuevo->{'id'};
                   $temp['nuevo_id'] = $id_generado;
@@ -41,10 +42,10 @@ class Controller_Permiso extends Controller
         echo json_encode($rpta);
     }
 
-     public static function crear($nombre, $llave)
+     public static function crear($sistema_id, $nombre, $llave)
     {
         $permisos = Controller::load_model('permisos');
-        return $permisos->crear($nombre, $llave);
+        return $permisos->crear($sistema_id, $nombre, $llave);
     }
 
     public static function editar($id, $nombre, $llave)
@@ -59,10 +60,10 @@ class Controller_Permiso extends Controller
         $permisos->eliminar($id);
     }
 
-    public static function listar()
+    public static function listar($sistema_id)
     {
-    	$permisos = Controller::load_model('permisos');
-		echo json_encode($permisos->listar());
+        $permisos = Controller::load_model('permisos');
+        echo json_encode($permisos->listar($sistema_id));
     }
 
     public static function listar_asociados($rol_id)

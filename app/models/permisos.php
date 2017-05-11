@@ -7,11 +7,12 @@ class Permisos extends Database
 		parent::__construct();
 	}
 
-	public function crear($nombre, $llave)
+	public function crear($sistema_id, $nombre, $llave)
 	{
 		$permisos = ORM::for_table('permisos')->create();
 		$permisos->set('nombre', $nombre);
 		$permisos->set('llave', $llave);
+		$permisos->set('sistema_id', $sistema_id);
 		$permisos->save();
 		
 		return $permisos->id(); 
@@ -30,9 +31,9 @@ class Permisos extends Database
 		ORM::for_table('permisos')->where_equal('id', $id)->find_one()->delete();
 	}
 
-	public function listar()
+	public function listar($sistema_id)
 	{
-		return ORM::for_table('permisos')->select('id')->select('nombre')->select('llave')->find_array();
+		return ORM::for_table('permisos')->select('id')->select('nombre')->select('llave')->where('sistema_id', $sistema_id)->find_array();
 	}
 
 	public function listar_asociados($rol_id)

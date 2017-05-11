@@ -39,7 +39,7 @@ Flight::route('POST /modulo/guardar', array('Controller_Modulo','guardar'));
 Flight::route('GET /subtitulo/listar/@modulo_id', array('Controller_Subtitulo','listar'));
 Flight::route('POST /subtitulo/guardar', array('Controller_Subtitulo','guardar'));
 
-Flight::route('GET /permiso/listar', array('Controller_Permiso','listar'));
+Flight::route('GET /permiso/listar/@sistema_id', array('Controller_Permiso','listar'));
 Flight::route('GET /permiso/listar_asociados/@rol_id', array('Controller_Permiso','listar_asociados'));
 Flight::route('POST /permiso/guardar', array('Controller_Permiso','guardar'));
 
