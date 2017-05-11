@@ -66,10 +66,10 @@ class Controller_Permiso extends Controller
         echo json_encode($permisos->listar($sistema_id));
     }
 
-    public static function listar_asociados($rol_id)
+    public static function listar_asociados($sistema_id, $rol_id)
     {
     	$permisos = Controller::load_model('permisos');
-       echo json_encode($permisos->listar_asociados($rol_id));
+       echo json_encode($permisos->listar_asociados($sistema_id, $rol_id));
     }
 }
 

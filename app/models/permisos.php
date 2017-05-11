@@ -36,12 +36,12 @@ class Permisos extends Database
 		return ORM::for_table('permisos')->select('id')->select('nombre')->select('llave')->where('sistema_id', $sistema_id)->find_array();
 	}
 
-	public function listar_asociados($rol_id)
+	public function listar_asociados($sistema_id, $rol_id)
 	{
 		return ORM::for_table('permisos')->raw_query('
             SELECT T.id AS id, T.nombre AS nombre, (CASE WHEN (P.existe = 1) THEN 1 ELSE 0 END) AS existe, T.llave AS llave FROM
         (
-            SELECT id, nombre, llave, 0 AS existe FROM permisos
+            SELECT id, nombre, llave, 0 AS existe FROM permisos WHERE sistema_id = :sistema_id
         ) T
         LEFT JOIN
         (
@@ -49,7 +49,7 @@ class Permisos extends Database
             INNER JOIN roles_permisos RP ON P.id = RP.permiso_id
             WHERE RP.rol_id = :rol_id
         ) P
-        ON T.id = P.id', array('rol_id' => $rol_id))->find_array();
+        ON T.id = P.id', array('rol_id' => $rol_id, 'sistema_id' => $sistema_id))->find_array();
 	}
 }
 

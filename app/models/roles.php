@@ -7,10 +7,11 @@ class Roles extends Database
 		parent::__construct();
 	}
 
-	public function crear($nombre)
+	public function crear($nombre, $sistema_id)
 	{
 		$roles = ORM::for_table('roles')->create();
 		$roles->set('nombre', $nombre);
+		$roles->set('sistema_id', $sistema_id);
 		$roles->save();
 		
 		return $roles->id(); 
@@ -28,9 +29,9 @@ class Roles extends Database
 		ORM::for_table('roles')->where_equal('id', $id)->find_one()->delete();
 	}
 
-	public function listar()
+	public function listar($sistema_id)
 	{
-		return ORM::for_table('roles')->select('id')->select('nombre')->find_array();
+		return ORM::for_table('roles')->select('id')->select('nombre')->where('sistema_id', $sistema_id)->find_array();
 	}
 
 	public function asociar_permiso($rol_id, $permiso_id)

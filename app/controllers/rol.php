@@ -8,12 +8,13 @@ class Controller_Rol extends Controller
 		$nuevos = $data->{'nuevos'};
 		$editados = $data->{'editados'};
 		$eliminados = $data->{'eliminados'};
+              $sistema_id = $data->{"extra"}->{'sistema_id'};
 		$rpta = []; $array_nuevos = [];
 
 		try {
 			if(count($nuevos) > 0){
 				foreach ($nuevos as &$nuevo) {
-				    $id_generado = self::crear($nuevo->{'nombre'});
+				    $id_generado = self::crear($nuevo->{'nombre'}, $sistema_id);
 				    $temp = [];
 				    $temp['temporal'] = $nuevo->{'id'};
 	              $temp['nuevo_id'] = $id_generado;
@@ -41,10 +42,10 @@ class Controller_Rol extends Controller
 		echo json_encode($rpta);
 	}
 
-	 public static function crear($nombre)
+	 public static function crear($nombre, $sistema_id)
     {
     	$roles = Controller::load_model('roles');
-		return $roles->crear($nombre);
+		return $roles->crear($nombre, $sistema_id);
     }
 
     public static function editar($id, $nombre)
@@ -59,10 +60,10 @@ class Controller_Rol extends Controller
 		$roles->eliminar($id);
     }
 
-	public static function listar()
+	public static function listar($sistema_id)
     {
     	$roles = Controller::load_model('roles');
-		echo json_encode($roles->listar());
+		echo json_encode($roles->listar($sistema_id));
     }
 
     public static function ascociar_permisos()
