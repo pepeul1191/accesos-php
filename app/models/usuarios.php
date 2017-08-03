@@ -71,6 +71,11 @@ class Usuarios extends Database
 		ORM::for_table('usuarios_roles')->where_equal(array('usuario_id' =>$usuario_id, 'rol_id' => $rol_id))->find_one()->delete();
 	}
 
+	public function validar_nombre_repetido($usuario)
+	{
+		return count(ORM::for_table('usuarios')->where(array('usuario' => $usuario))->find_result_set());
+	}
+
 }
 
 ?>

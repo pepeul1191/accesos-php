@@ -57,6 +57,8 @@ Flight::route('GET /usuario/listar_roles/@usuario_id', array('Controller_Usuario
 Flight::route('POST /usuario/asociar_permisos', array('Controller_Usuario','asociar_permisos'));
 Flight::route('POST /usuario/asociar_roles', array('Controller_Usuario','asociar_roles'));
 Flight::route('POST /usuario/validar', array('Controller_Usuario','validar'));
+Flight::route('POST /usuario/validar_nombre_repetido', array('Controller_Usuario','validar_nombre_repetido'));
+
 /*
 Flight::map('notFound', function(){
 	Flight::redirect('/error/404');
