@@ -139,6 +139,15 @@ class Controller_Usuario extends Controller
 
           echo $rpta;
       }
+
+      public static function validar_correo_repetido()
+      {
+         $usuarios = Controller::load_model('usuarios');
+         $correo = Flight::request()->query['correo'];
+         $rpta = $usuarios->validar_correo_repetido($correo);
+
+          echo $rpta;
+      }
 }
 
 ?>
