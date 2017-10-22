@@ -85,6 +85,11 @@ class Usuarios extends Database
 	{
 		return count(ORM::for_table('usuarios')->where(array('correo' => $correo))->find_result_set());
 	}
+
+	public function validar_correo_repetido_editado($usuario_id, $correo)
+	{
+		return count(ORM::for_table('usuarios')->where(array('id' => $usuario_id,'correo' => $correo))->find_result_set());
+	}
 }
 
 ?>

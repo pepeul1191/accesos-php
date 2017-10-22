@@ -156,11 +156,25 @@ class Controller_Usuario extends Controller
 
       public static function validar_correo_repetido()
       {
-         $usuarios = Controller::load_model('usuarios');
-         $correo = Flight::request()->query['correo'];
-         $rpta = $usuarios->validar_correo_repetido($correo);
+        $usuarios = Controller::load_model('usuarios');
+        $data = json_decode(Flight::request()->query['data']);
+        $correo_id = $data->{'id'};
+        $correo = $data->{'correo'};
+       
+        if($correo_id == 'E'){
+              #estamos hablando de un correo nuevo, no tiene que repetirse el nombre
+            $rpta = $usuarios->validar_correo_repetido($correo);
+        }else{
+            #estamos hablando de un correo a ediatr, no tiene que repetirse el nombre a menos que estemo
+            $rpta = $usuarios->validar_correo_repetido_editado($correo_id, $correo);
+            if($rpta == 1){
+                $rpta = 0;
+            }else{
+                $rpta = $usuarios->validar_correo_repetido($correo);
+            }
+        }
 
-          echo $rpta;
+        echo $rpta;
       }
 }
 

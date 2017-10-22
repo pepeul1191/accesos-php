@@ -63,8 +63,6 @@ Flight::route('POST /usuario/validar', array('Controller_Usuario','validar'));
 Flight::route('POST /usuario/nombre_repetido', array('Controller_Usuario','validar_nombre_repetido'));
 Flight::route('POST /usuario/correo_repetido', array('Controller_Usuario','validar_correo_repetido'));
 /*
-    $r->post('/accesos/usuario/nombre_repetido')->to('acceso-usuario#nombre_repetido');
-    $r->post('/accesos/usuario/correo_repetido')->to('acceso-usuario#correo_repetido');
     $r->post('/accesos/usuario/contrasenia_repetida')->to('acceso-usuario#contrasenia_repetida');
     $r->get('/accesos/usuario/obtener_usuario_correo/:usuario_id')->to('acceso-usuario#obtener_usuario_correo');
     $r->post('/accesos/usuario/guardar_usuario_correo')->to('acceso-usuario#guardar_usuario_correo');
