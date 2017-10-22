@@ -15,11 +15,11 @@ class Usuarios extends Database
             SELECT U.id AS id, U.usuario AS usuario, A.momento AS momento, U.correo AS correo FROM usuarios U INNER JOIN accesos A ON U.id = A.usuario_id GROUP BY U.usuario ORDER BY U.id', array())->find_array();
 	}
 
-	public function listar_permisos($usuario_id){
+	public function listar_permisos($sistema_id, $usuario_id){
 		return ORM::for_table('usuarios')->raw_query('
 	        SELECT T.id AS id, T.nombre AS nombre, (CASE WHEN (P.existe = 1) THEN 1 ELSE 0 END) AS existe, T.llave AS llave FROM
 	        (
-	            SELECT id, nombre, llave, 0 AS existe FROM permisos
+	            SELECT id, nombre, llave, 0 AS existe FROM permisos WHERE sistema_id = :sistema_id
 	        ) T
 	        LEFT JOIN
 	        (
@@ -27,14 +27,14 @@ class Usuarios extends Database
 	            INNER JOIN usuarios_permisos UP ON P.id = UP.permiso_id
 	            WHERE UP.usuario_id = :usuario_id
 	        ) P
-	        ON T.id = P.id', array('usuario_id' => $usuario_id))->find_array();
+	        ON T.id = P.id', array('sistema_id' => $sistema_id, 'usuario_id' => $usuario_id))->find_array();
 	}
 
-	public function listar_roles($usuario_id){
+	public function listar_roles($sistema_id, $usuario_id){
 		return ORM::for_table('usuarios')->raw_query('
-	        SELECT T.id AS id, T.nombre AS nombre, (CASE WHEN (P.existe = 1) THEN 1 ELSE 0 END) AS existe FROM
+			SELECT T.id AS id, T.nombre AS nombre, (CASE WHEN (P.existe = 1) THEN 1 ELSE 0 END) AS existe FROM
 	        (
-	            SELECT id, nombre, 0 AS existe FROM roles 
+	            SELECT id, nombre, 0 AS existe FROM roles WHERE sistema_id = :sistema_id
 	        ) T
 	        LEFT JOIN
 	        (
@@ -42,7 +42,7 @@ class Usuarios extends Database
 	            INNER JOIN usuarios_roles UR ON R.id = UR.rol_id
 	            WHERE UR.usuario_id = :usuario_id
 	        ) P
-	        ON T.id = P.id', array('usuario_id' => $usuario_id))->find_array();
+	        ON T.id = P.id', array('sistema_id' => $sistema_id, 'usuario_id' => $usuario_id))->find_array();
 	}
 
 	public function asociar_permiso($usuario_id, $permiso_id)

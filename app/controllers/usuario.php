@@ -103,17 +103,17 @@ class Controller_Usuario extends Controller
         echo json_encode($accesos_usuarios); 
     }
 
-    public static function listar_permisos($usuario_id)
+    public static function listar_permisos($sistema_id, $usuario_id)
     {
         $usuarios = Controller::load_model('usuarios');
-        $permisos_usuarios = $usuarios->listar_permisos($usuario_id);
+        $permisos_usuarios = $usuarios->listar_permisos($sistema_id, $usuario_id);
         echo json_encode($permisos_usuarios); 
     }
 
-    public static function listar_roles($usuario_id)
+    public static function listar_roles($sistema_id, $usuario_id)
     {
         $usuarios = Controller::load_model('usuarios');
-        $roles_usuarios = $usuarios->listar_roles($usuario_id);
+        $roles_usuarios = $usuarios->listar_roles($sistema_id, $usuario_id);
         echo json_encode($roles_usuarios); 
     }
 

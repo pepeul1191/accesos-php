@@ -55,8 +55,8 @@ Flight::route('POST /sistema/asociar_usuario', array('Controller_Sistema','asoci
 
 Flight::route('GET /usuario/listar', array('Controller_Usuario','listar'));
 Flight::route('GET /usuario/listar_accesos/@usuario_id', array('Controller_Usuario','listar_accesos'));
-Flight::route('GET /usuario/listar_permisos/@usuario_id', array('Controller_Usuario','listar_permisos'));
-Flight::route('GET /usuario/listar_roles/@usuario_id', array('Controller_Usuario','listar_roles'));
+Flight::route('GET /usuario/listar_permisos/@sistema_id/@usuario_id', array('Controller_Usuario','listar_permisos'));
+Flight::route('GET /usuario/listar_roles/@sistema_id/@usuario_id', array('Controller_Usuario','listar_roles'));
 Flight::route('POST /usuario/asociar_permisos', array('Controller_Usuario','asociar_permisos'));
 Flight::route('POST /usuario/asociar_roles', array('Controller_Usuario','asociar_roles'));
 Flight::route('POST /usuario/validar', array('Controller_Usuario','validar'));
