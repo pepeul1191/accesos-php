@@ -176,6 +176,12 @@ class Controller_Usuario extends Controller
 
         echo $rpta;
       }
+
+      public function usuario_correo($usuario_id)
+      {
+          $usuarios = Controller::load_model('usuarios');
+          echo json_encode($usuarios->obtener_usuario_correo($usuario_id));
+      }
 }
 
 ?>

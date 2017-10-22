@@ -90,6 +90,12 @@ class Usuarios extends Database
 	{
 		return count(ORM::for_table('usuarios')->where(array('id' => $usuario_id,'correo' => $correo))->find_result_set());
 	}
+
+	public  function obtener_usuario_correo($usuario_id)
+	{
+		$temp = ORM::for_table('usuarios')->select('usuario')->select('correo')->where('id', $usuario_id)->find_array();
+		return $temp[0];
+	}
 }
 
 ?>
