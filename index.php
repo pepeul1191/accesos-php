@@ -64,11 +64,8 @@ Flight::route('POST /usuario/validar', array('Controller_Usuario','validar'));
 Flight::route('POST /usuario/nombre_repetido', array('Controller_Usuario','validar_nombre_repetido'));
 Flight::route('POST /usuario/correo_repetido', array('Controller_Usuario','validar_correo_repetido'));
 Flight::route('POST /usuario/contrasenia_repetida', array('Controller_Usuario','contrasenia_repetida'));
-/*
-    $r->post('/accesos/usuario/contrasenia_repetida')->to('acceso-usuario#contrasenia_repetida');
-    $r->post('/accesos/usuario/guardar_usuario_correo')->to('acceso-usuario#guardar_usuario_correo');
-    $r->post('/accesos/usuario/guardar_contrasenia')->to('acceso-usuario#guardar_contrasenia');
-*/
+Flight::route('POST /usuario/guardar_usuario_correo', array('Controller_Usuario','guardar_usuario_correo'));
+Flight::route('POST /usuario/guardar_contrasenia', array('Controller_Usuario','guardar_contrasenia'));
 /*
 Flight::map('notFound', function(){
 	Flight::redirect('/error/404');

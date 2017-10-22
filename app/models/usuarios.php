@@ -101,6 +101,21 @@ class Usuarios extends Database
 	{
 		return count(ORM::for_table('usuarios')->where(array('id' => $usuario_id,'contrasenia' => $contrasenia))->find_result_set());
 	}
+
+	public function guardar_usuario_correo($usuario_id, $usuario, $correo)
+	{
+		$usuarios = ORM::for_table('usuarios')->where_equal('id', $usuario_id)->find_one();
+		$usuarios->set('usuario', $usuario);
+		$usuarios->set('correo', $correo);
+		$usuarios->save();
+	}
+
+	public function guardar_contrasenia($usuario_id, $contrasenia)
+	{
+		$usuarios = ORM::for_table('usuarios')->where_equal('id', $usuario_id)->find_one();
+		$usuarios->set('contrasenia', $contrasenia);
+		$usuarios->save();
+	}
 }
 
 ?>

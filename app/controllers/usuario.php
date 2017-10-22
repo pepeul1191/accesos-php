@@ -192,6 +192,49 @@ class Controller_Usuario extends Controller
 
           echo $usuarios->validar_contrasenia_repetida($id, $contrasenia);
       }
+
+      public function guardar_usuario_correo()
+      {
+            $usuario_json = json_decode(Flight::request()->query['usuario']);
+            #$usuario_id = $usuario->{"extra"}->{'usuario_id'};
+           $usuario_id = $usuario_json->{'id'};
+           $usuario = $usuario_json->{'usuario'};
+           $correo = $usuario_json->{'correo'};
+
+           try {
+              $usuarios = Controller::load_model('usuarios');
+              $usuarios->guardar_usuario_correo($usuario_id, $usuario, $correo);
+              $rpta['tipo_mensaje'] = 'success';
+              $rpta['mensaje'] = ['Se ha registrado los cambios en los datos generales del usuario'];
+           } catch (Exception $e) {
+               #echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+              $rpta['tipo_mensaje'] = 'error';
+              $rpta['mensaje'] = ['Se ha producido un error en guardar los datos generales del usuario', $e->getMessage()];
+           }
+
+           echo json_encode($rpta);
+      }
+
+      public function guardar_contrasenia()
+      {
+            $usuario = json_decode(Flight::request()->query['contrasenia']);
+            #$usuario_id = $usuario->{"extra"}->{'usuario_id'};
+           $usuario_id = $usuario->{'id'};
+           $contrasenia = $usuario->{'contrasenia'};
+
+           try {
+              $usuarios = Controller::load_model('usuarios');
+              $usuarios->guardar_contrasenia($usuario_id, $contrasenia);
+              $rpta['tipo_mensaje'] = 'success';
+              $rpta['mensaje'] = ['Se ha actualizado la contrasenia del usuario'];
+           } catch (Exception $e) {
+               #echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+              $rpta['tipo_mensaje'] = 'error';
+              $rpta['mensaje'] = ['Se ha producido un error en guardar la contraseña del usuario', $e->getMessage()];
+           }
+
+           echo json_encode($rpta);
+      }
 }
 
 ?>
