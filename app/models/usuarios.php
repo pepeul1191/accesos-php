@@ -96,6 +96,11 @@ class Usuarios extends Database
 		$temp = ORM::for_table('usuarios')->select('usuario')->select('correo')->where('id', $usuario_id)->find_array();
 		return $temp[0];
 	}
+
+	public function validar_contrasenia_repetida($usuario_id, $contrasenia)
+	{
+		return count(ORM::for_table('usuarios')->where(array('id' => $usuario_id,'contrasenia' => $contrasenia))->find_result_set());
+	}
 }
 
 ?>

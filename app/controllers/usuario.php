@@ -158,15 +158,15 @@ class Controller_Usuario extends Controller
       {
         $usuarios = Controller::load_model('usuarios');
         $data = json_decode(Flight::request()->query['data']);
-        $correo_id = $data->{'id'};
+        $id = $data->{'id'};
         $correo = $data->{'correo'};
        
-        if($correo_id == 'E'){
+        if($id == 'E'){
               #estamos hablando de un correo nuevo, no tiene que repetirse el nombre
             $rpta = $usuarios->validar_correo_repetido($correo);
         }else{
             #estamos hablando de un correo a ediatr, no tiene que repetirse el nombre a menos que estemo
-            $rpta = $usuarios->validar_correo_repetido_editado($correo_id, $correo);
+            $rpta = $usuarios->validar_correo_repetido_editado($id, $correo);
             if($rpta == 1){
                 $rpta = 0;
             }else{
@@ -181,6 +181,16 @@ class Controller_Usuario extends Controller
       {
           $usuarios = Controller::load_model('usuarios');
           echo json_encode($usuarios->obtener_usuario_correo($usuario_id));
+      }
+
+      public function contrasenia_repetida()
+      {
+          $usuarios = Controller::load_model('usuarios');
+          $data = json_decode(Flight::request()->query['data']);
+          $id = $data->{'id'};
+          $contrasenia = $data->{'contrasenia'};
+
+          echo $usuarios->validar_contrasenia_repetida($id, $contrasenia);
       }
 }
 
