@@ -24,280 +24,39 @@ Servicio web desarrollado en PHP usando el framework FlightPHP, con patrones de 
 
 ### Rutas
 
-+ get 'estado_usuario/listar', to Controller_Estado_Usuario#listar
-+ get '/item/listar/menu/@nombre_modulo', to Controller_Item#menu
-+ get '/item/listar_todos', to Controller_Item#listar_todos
-+ post 'usuario/validar', to: 'usuario#validar'
-
-
-
-+ get 'usuario/listar', to: 'usuario#listar'
-+ get 'usuario/listar_permisos/:usuario_id', 'usuario/listar_permisos'
-
-### Rutas - Descripción
-
-#### [URL] + estado_usuario/listar
-
-<b>Objetivo(s)</b>
-
-Devolver un listado de los estados en los que se puede encontrar un usuario.
-
-<b>Método HTTP</b>
-
-+ GET
-
-<b>Parámetros</b>
-
-+ Argumentos en la url : ninguno
-+ Query Params : ninguno 
-
-<b>Formato de respuesta OK</b>
-
-JSON string de la lista de usuarios.
-
-> [{"id":"1","nombre":"activo"},{"id":"2","nombre":"bloqueado"},{"id":"3","nombre":"eliminado"}]
-
-<b>Formato de respuesta alternativo </b>
-
-+ Los generados por las excepciones controladas con el siguiente formato:
-
-> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
-
----
-
-#### [URL] + /item/listar/menu/@nombre_modulo
-
-<b>Objetivo(s)</b>
-
-Devolver un listado de los subtitulos con sus respectivos items y urls.
-
-<b>Método HTTP</b>
-
-+ GET
-
-<b>Parámetros</b>
-
-+ Argumentos en la url : @nombre_modulo
-+ Query Params : ninguno 
-
-<b>Formato de respuesta OK</b>
-
-JSON string de la lista de usuarios.
-
-> [[{"subtitulo":"Usuarios","items":[{"item":"Listado","url":"accesos\/usuarios"}]},{"subtitulo":"Menu","items":[{"item":"Listado","url":"accesos\/menus"}]},{"subtitulo":"Acceso a Funciones","items":[{"item":"Listado de permisos","url":"accesos\/permisos"},{"item":"Listado de roles","url":"accesos\/roles"}]},{"subtitulo":"Logs","items":[{"item":"Logs de errores","url":"accesos\/log\/errores"},{"item":"Listado de roles","url":"accesos\/roles"},{"item":"Logs de acceso","url":"accesos\/log\/accesos"},{"item":"Logs de operaciones","url":"accesos\/log\/operaciones"}]}]
-
-<b>Formato de respuesta alternativo </b>
-
-+ Los generados por las excepciones controladas con el siguiente formato:
-
-> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
-
----
-
-#### [URL] + modulo/listar
-
-<b>Objetivo(s)</b>
-
-Devolver un listado de los módulos del sistema
-
-<b>Método HTTP</b>
-
-+ GET
-
-<b>Parámetros</b>
-
-+ Argumentos en la url : ninguno
-+ Query Params : ninguno 
-
-<b>Formato de respuesta OK</b>
-
-JSON string de la lista de módulos.
-
-> [{"id":"1","url":"accesos","nombre":"Accesos"},{"id":"2","url":"seguridad","nombre":"Seguridad"},{"id":"3","url":"demo\/archivos","nombre":"Demo"}]
-
-<b>Formato de respuesta alternativo </b>
-
-+ Los generados por las excepciones controladas con el siguiente formato:
-
-> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
-
----
-
-#### [URL] + item/listar/@subtitulo_id
-
-<b>Objetivo(s)</b>
-
-Devolver un listado de los items perteneciente a los un determinado subtitulo.
-
-<b>Método HTTP</b>
-
-+ GET
-
-<b>Parámetros</b>
-
-+ Argumentos en la url : @subtitulo_id
-+ Query Params : ninguno 
-
-<b>Formato de respuesta OK</b>
-
-JSON string de la lista de módulos.
-
-> [{"id":"6","nombre":"Logs de errores","url":"accesos\/log\/errores"},{"id":"7","nombre":"Logs de acceso","url":"accesos\/log\/accesos"},{"id":"8","nombre":"Logs de operaciones","url":"accesos\/log\/operaciones"}]
-
-<b>Formato de respuesta alternativo </b>
-
-+ Los generados por las excepciones controladas con el siguiente formato:
-
-> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
-
----
-
-#### [URL] + modulo/listar_todos
-
-<b>Objetivo(s)</b>
-
-Devolver un listado del menú completo, formado por módulos, subtitulos e items.
-
-<b>Método HTTP</b>
-
-+ GET
-
-<b>Parámetros</b>
-
-+ Argumentos en la url : ninguno
-+ Query Params : ninguno 
-
-<b>Formato de respuesta OK</b>
-
-JSON string de la lista de módulos.
-
-> [{"icono":"glyphicon glyphicon-user","subtitulos":[{"subtitulo":"Acceso a Funciones","items":[{"url":"accesos/permisos","nombre":"Listado de permisos"},{"nombre":"Listado de roles","url":"accesos/roles"}]},{"subtitulo":"Logs","items":[{"url":"accesos/log/errores","nombre":"Logs de errores"},{"nombre":"Logs de acceso","url":"accesos/log/accesos"},{"url":"accesos/log/operaciones","nombre":"Logs de operaciones"}]},{"items":[{"nombre":"Listado","url":"accesos/menus"}],"subtitulo":"Menu"},{"subtitulo":"Usuarios","items":[{"nombre":"Listado","url":"accesos/usuarios"}]}],"modulo":"Accesos"},{"modulo":"Demo","subtitulos":[{"items":[{"nombre":"Archivos con Samba","url":"demo/archivos"}],"subtitulo":"Funcionalidades Demo"}],"icono":null},{"modulo":"Seguridad","subtitulos":[{"subtitulo":"GestiÃ³n","items":[{"url":"seguridad/gestion/activos","nombre":"Inventario de Activos"}]},{"subtitulo":"Maestros","items":[{"url":"seguridad/maestros/controles","nombre":"Controles"},{"url":"seguridad/maestros/vulnerabilidades","nombre":"Vulnerabilidades"},{"nombre":"Grupo de Activos","url":"seguridad/maestros/grupo_activos"},{"nombre":"Amenazas","url":"seguridad/maestros/amenazas"},{"nombre":"Riegos","url":"seguridad/maestros/riesgos"},{"url":"seguridad/maestros/agentes","nombre":"Agentes"},{"nombre":"Ubicaciones","url":"seguridad/maestros/ubicaciones"},{"nombre":"Capas","url":"seguridad/maestros/capas"},{"url":"seguridad/maestros/criticidades","nombre":"Criticidades"},{"url":"seguridad/maestros/tipo_activos","nombre":"Tipo de Activos"}]},{"subtitulo":"Reportes","items":[{"url":"repo/1","nombre":"Repo 1"},{"nombre":"Repo 2","url":"repo/2"}]}],"icono":"glyphicon glyphicon-lock"}]
-
-<b>Formato de respuesta alternativo </b>
-
-+ Los generados por las excepciones controladas con el siguiente formato:
-
-> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
-
----
-
-#### [URL] + usuario/listar
-
-<b>Objetivo(s)</b>
-
-Devolver un listado de todos los datos de los usuarios.
-
-<b>Método HTTP</b>
-
-+ GET
-
-<b>Parámetros</b>
-
-+ Argumentos en la url : ninguno
-+ Query Params : ninguno 
-
-<b>Formato de respuesta OK</b>
-
-JSON string de la lista de usuarios.
-
-> {"id":1,"usuario":"pepe","contrasenia":"ujaGz6w7QkJOKec1YkSkNgu4RGJIHYxkjpdpHx/YU/w=","correo":"jvaldivia@softweb.pe","estado_usuario_id":1}{"id":2,"usuario":"yacky","contrasenia":"ujaGz6w7QkJOKec1YkSkNiB4CQM2YMjqrX5tyjAyXaY=","correo":"yramirez@disenoreal.com","estado_usuario_id":1}{"id":3,"usuario":"rails","contrasenia":"Z66FgGws3EKbDFPViiEnSA==","correo":"jvaldivia@softweb.pe","estado_usuario_id":1}{"id":4,"usuario":"fuel","contrasenia":"QJOPfBjSrktR5f4aZKOaGpdZs8fnwzYAoT3F2dOrIks=","correo":"jvaldivia@softweb.pe","estado_usuario_id":1}
-
-<b>Formato de respuesta alternativo </b>
-
-+ Los generados por las excepciones controladas con el siguiente formato:
-
-> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
-
----
-
-#### [URL] + usuario/validar
-
-<b>Objetivo(s)</b>
-
-Validar si el usuario y contraseña ingresada conincide con la base de datos.
-
-<b>Método HTTP</b>
-
-+ POST
-
-<b>Parámetros</b>
-
-+ Argumentos en la url : ninguno
-+ Query Params : usuario, contrasenia
-
-<b>Formato de respuesta OK</b>
-
-Devuelve '1' si el usuario y contraseña existen y coinciden con un registro de la base de datos, '0' si no existe coincidencia
-
-> 1
-
-<b>Formato de respuesta alternativo </b>
-
-+ Los generados por las excepciones controladas con el siguiente formato:
-
-> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
-
-+ Si no existe o no hay coincidencia con el usuario y contraseña:
-
-> 0
-
----
-
-#### [URL] + usuario/listar_usuarios
-
-<b>Objetivo(s)</b>
-
-Devolver un listado sólo el campo usuario de los usuarios.
-
-<b>Método HTTP</b>
-
-+ GET
-
-<b>Parámetros</b>
-
-+ Argumentos en la url : ninguno
-+ Query Params : ninguno
-
-<b>Formato de respuesta OK</b>
-
-Devuelve un arraglo de JSONs en string, cada JSON tendrá sólo la llave usuario y su respectivo valor.
-
-> [{"usuario":"pepe"},{"usuario":"yacky"},{"usuario":"rails"},{"usuario":"fuel"}]
-
-<b>Formato de respuesta alternativo </b>
-
-+ Los generados por las excepciones controladas con el siguiente formato:
-
-> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
-
----
-
-#### [URL] + usuario/listar_permisos/:usuario_id
-
-<b>Objetivo(s)</b>
-
-Devolver un listado de los permisos de un usuario.
-
-<b>Método HTTP</b>
-
-+ GET
-
-<b>Parámetros</b>
-
-+ Argumentos en la url : usuario_id
-+ Query Params : ninguno
-
-<b>Formato de respuesta OK</b>
-
-Devuelve un arraglo de JSONs en string, cada JSON mostrando el id, nombre del permiso y su respectivo valor.
-
-> [{"id":1,"nombre":"Crear usuario","existe":0,"llave":"crear_usuario"},{"id":3,"nombre":"Editar usuario","existe":0,"llave":"editar_usuario"},{"id":4,"nombre":"Ver usuario","existe":0,"llave":"ver_usuario"}]
-
-<b>Formato de respuesta alternativo </b>
-
-+ Los generados por las excepciones controladas con el siguiente formato:
-
-> {"tipo_mensaje":"error","rpta_mensaje":"mensaje personalizado","error":"Error en string de la excepción"}
++ GET '/estado_usuario/listar', to Controller_Estado_Usuario#listar
++ GET '/item/listar/menu', to Controller_Item#menu
++ GET '/item/listar_todos', to Controller_Item#listar_todos
++ GET '/item/listar/@subtitulo_id', to Controller_Item#listar
++ POST '/item/guardar', to Controller_Item#guardar
++ GET '/modulo/listar/@sistema_id', to Controller_Modulo#listar
++ GET '/modulo/listar_menu', to Controller_Modulo#listar_menu
++ POST '/modulo/guardar', to Controller_Modulo#guardar
++ GET '/subtitulo/listar/@modulo_id', to Controller_Subtitulo#listar
++ POST '/subtitulo/guardar', to Controller_Subtitulo#guardar
++ GET '/permiso/listar/@sistema_id', to Controller_Permiso#listar
++ GET '/permiso/listar_asociados/@sistema_id/@rol_id', to Controller_Permiso#listar_asociados
++ POST '/permiso/guardar', to Controller_Permiso#guardar
++ GET '/rol/listar/@sistema_id', to Controller_Rol#listar
++ POST '/rol/guardar', to Controller_Rol#guardar
++ POST '/rol/asociar_permisos', to Controller_Rol#asociar_permisos
++ GET '/sistema/listar', to Controller_Sistema#listar
++ GET '/sistema/usuario/@usuario_id', to Controller_Sistema#usuario
++ POST '/sistema/guardar', to Controller_Sistema#guardar
++ POST '/sistema/asociar_usuario', to Controller_Sistema#asociar_usuario
++ GET '/usuario/listar', to Controller_Usuario#listar
++ GET '/usuario/listar_accesos/@usuario_id', to Controller_Usuario#listar_accesos
++ GET '/usuario/listar_permisos/@sistema_id/@usuario_id', to Controller_Usuario#listar_permisos
++ GET '/usuario/listar_roles/@sistema_id/@usuario_id', to Controller_Usuario#listar_roles
++ GET '/usuario/usuario_correo/@usuario_id', to Controller_Usuario#usuario_correo
++ POST '/usuario/asociar_permisos', to Controller_Usuario#asociar_permisos
++ POST '/usuario/asociar_roles', to Controller_Usuario#asociar_roles
++ POST '/usuario/validar', to Controller_Usuario#validar
++ POST '/usuario/nombre_repetido', to Controller_Usuario#validar_nombre_repetido
++ POST '/usuario/correo_repetido', to Controller_Usuario#validar_correo_repetido
++ POST '/usuario/contrasenia_repetida', to Controller_Usuario#contrasenia_repetida
++ POST '/usuario/guardar_usuario_correo', to Controller_Usuario#guardar_usuario_correo
++ POST '/usuario/guardar_contrasenia', to Controller_Usuario#guardar_contrasenia
 
 --- 
 
