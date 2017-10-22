@@ -64,6 +64,57 @@ class Controller_Sistema extends Controller
     	$sistemas = Controller::load_model('sistemas');
 		$sistemas->eliminar($id);
     }
+
+	public static function usuario($usuario_id)
+    {
+        $sistemas = Controller::load_model('sistemas');
+        echo json_encode($sistemas->usuario($usuario_id));
+    }
+
+    public static function asociar_usuario()
+    {
+    	$data = json_decode(Flight::request()->query['data']);
+        #$usuario_id = $data->{"extra"}->{'usuario_id'};
+       $usuario_id = $data->{'extra'}->{'usuario_id'};
+       $nuevos = $data->{'nuevos'};
+       $editados = $data->{'editados'};
+       $eliminados = $data->{'eliminados'};
+       $rpta = []; $array_nuevos = [];
+
+       try {
+        if(count($nuevos) > 0){
+         foreach ($nuevos as &$nuevo) {
+           $sistema_id = $nuevo->{'id'}; 
+             self::asociar((int)$usuario_id, (int)$sistema_id);
+         }
+        }
+        if(count($eliminados) > 0){
+         foreach ($eliminados as &$eliminado) {
+             self::desasociar((int)$usuario_id, (int)$eliminado);
+         }
+        }
+        $rpta['tipo_mensaje'] = 'success';
+              $rpta['mensaje'] = ['Se ha registrado la asociación/deasociación de los usuarios al sistema'];
+       } catch (Exception $e) {
+           #echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+           $rpta['tipo_mensaje'] = 'error';
+              $rpta['mensaje'] = ['Se ha producido un error en asociar/deasociar los usuarios al sistema', $e->getMessage()];
+       }
+
+       echo json_encode($rpta);
+    }
+
+    public function asociar($usuario_id, $sistema_id)
+    {
+        $sistemas = Controller::load_model('sistemas');
+        $sistemas->asociar_usuario($usuario_id, $sistema_id);
+    }
+
+    public function desasociar($usuario_id, $sistema_id)
+    {
+        $sistemas = Controller::load_model('sistemas');
+        $sistemas->desasociar_usuario($usuario_id, $sistema_id);
+    }
 }
 
 ?>
