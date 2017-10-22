@@ -66,7 +66,7 @@ class Controller_Rol extends Controller
 		echo json_encode($roles->listar($sistema_id));
     }
 
-    public static function ascociar_permisos()
+    public static function asociar_permisos()
     {
     	$data = json_decode(Flight::request()->query['data']);
         #$rol_id = $data->{"extra"}->{'rol_id'};
