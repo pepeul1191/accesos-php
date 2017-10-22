@@ -133,11 +133,25 @@ class Controller_Usuario extends Controller
 
       public static function validar_nombre_repetido()
       {
-         $usuarios = Controller::load_model('usuarios');
-         $usuario = Flight::request()->query['usuario'];
-         $rpta = $usuarios->validar_nombre_repetido($usuario);
+        $usuarios = Controller::load_model('usuarios');
+        $data = json_decode(Flight::request()->query['data']);
+        $usuario_id = $data->{'id'};
+        $usuario = $data->{'usuario'};
+       
+        if($usuario_id == 'E'){
+              #estamos hablando de un usuario nuevo, no tiene que repetirse el nombre
+            $rpta = $usuarios->validar_usuario_repetido($usuario);
+        }else{
+            #estamos hablando de un usuario a ediatr, no tiene que repetirse el nombre a menos que estemo
+            $rpta = $usuarios->validar_usuario_repetido_editado($usuario_id, $usuario);
+            if($rpta == 1){
+                $rpta = 0;
+            }else{
+                $rpta = $usuarios->validar_usuario_repetido($usuario);
+            }
+        }
 
-          echo $rpta;
+        echo $rpta;
       }
 
       public static function validar_correo_repetido()
